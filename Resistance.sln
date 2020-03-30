@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resistance.Discord.Service", "Resistance.Discord.Service\Resistance.Discord.Service.csproj", "{4AC4F45B-9F74-45FE-BCE4-DD565F81A27C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resistance.Domain", "Resistance.Domain\Resistance.Domain.csproj", "{59BAAF2D-0A2D-4AEE-91E2-FAEB449E0C80}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4AC4F45B-9F74-45FE-BCE4-DD565F81A27C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AC4F45B-9F74-45FE-BCE4-DD565F81A27C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AC4F45B-9F74-45FE-BCE4-DD565F81A27C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AC4F45B-9F74-45FE-BCE4-DD565F81A27C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59BAAF2D-0A2D-4AEE-91E2-FAEB449E0C80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59BAAF2D-0A2D-4AEE-91E2-FAEB449E0C80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59BAAF2D-0A2D-4AEE-91E2-FAEB449E0C80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59BAAF2D-0A2D-4AEE-91E2-FAEB449E0C80}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
