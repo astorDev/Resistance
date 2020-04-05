@@ -24,10 +24,10 @@ namespace Resistance.Discord.Service
         {
             if (message.Channel.Id == DiscordService.GameChannelId)
             {
-                return message.MentionedUsers.Any() ? new MoveMessage(message, MoveType.CrewDeclaration) : new MoveMessage(message, MoveType.ChatSpam);
+                return message.MentionedUsers.Any() && message.Content.ToLower().Contains("команда") ? new MoveMessage(message, MoveType.CrewDeclaration) : new MoveMessage(message, MoveType.ChatSpam);
             }
             
-            if (game.CurrentMission != null && game.CurrentMission.HasParticipant(message.Author.Id.ToString()))
+            if (game.CurrentMission != null && game.CurrentMission.HasParticipantWhoHasNotVoted(message.Author.Id.ToString()))
             {
                 return new MoveMessage(message, MoveType.MissionVote);
             }

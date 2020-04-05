@@ -17,6 +17,12 @@ namespace Resistance.Discord.Service
         
         public async Task AcceptCrewAsync(MoveMessage message, DiscordSocketClient client)
         {
+            if (message.Raw.MentionedUsers.Select(u => u.Id).Distinct().Count() < message.Raw.MentionedUsers.Count)
+            {
+                await this.sendInGameChannelAsync("Брать одного игрока несколько раз для мудаков ;)", client);
+                return;
+            }
+            
             this.Game.CurrentMission = new Mission<DiscordPlayer>(message.Raw.MentionedUsers.Select(u => new DiscordPlayer(u)));
             await this.Game.CurrentMission.StartAsync();
             await this.sendInGameChannelAsync("Команда набрана!", client);
@@ -37,6 +43,7 @@ namespace Resistance.Discord.Service
             }
 
             await this.Game.CurrentMission.AcceptVoteAsync(vote.Value, message.Raw.Author.Id.ToString());
+            await this.sendInGameChannelAsync($"{message.Raw.Author.Username} проголосовал!", client);
             if (this.Game.CurrentMission.IsCompleted)
             {
                 await this.sendInGameChannelAsync($"Миссия завершена. Провалов: {this.Game.CurrentMission.FailsCount}", client);

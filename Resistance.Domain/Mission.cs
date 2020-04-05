@@ -26,9 +26,9 @@ namespace Resistance.Domain
             }
         }
 
-        public bool HasParticipant(string id)
+        public bool HasParticipantWhoHasNotVoted(string id)
         {
-            return this.Crew.Any(p => p.Player.Id == id);
+            return this.Crew.Any(p => p.Player.Id == id && !p.HasVoted);
         }
 
         public async Task AcceptVoteAsync(MissionVote vote, string playerId)

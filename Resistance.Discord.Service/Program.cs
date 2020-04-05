@@ -1,5 +1,7 @@
 ﻿using System;
+using System.IO;
 using System.Threading.Tasks;
+using Amazon.Runtime;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -11,14 +13,28 @@ namespace Resistance.Discord.Service
     {
         static async Task Main(string[] args)
         {
-            var builder = new HostBuilder()
-                .ConfigureServices((hostContext, services) =>
-                {
-                    services.AddSingleton<IHostedService, DiscordService>();
-                    new Startup(hostContext.Configuration).ConfigureServices(services);
-                });
+            try
+            {
+                var builder = new HostBuilder()
+                              .ConfigureAppConfiguration((context, config) =>
+                              {
+                                  var userFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+                                  var settingsPath = $"{userFolder}/SecretSettings/resistance.Production.json";
+                                  config.AddJsonFile(settingsPath);
+                              })
+                              .ConfigureServices((hostContext, services) =>
+                              {
+                                  services.AddSingleton<IHostedService, DiscordService>();
+                                  new Startup(hostContext.Configuration).ConfigureServices(services);
+                              });
 
-            await builder.RunConsoleAsync();
+                await builder.RunConsoleAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
         }
     }
 }
