@@ -18,7 +18,7 @@ namespace Resistance.Discord.Service
                 var builder = new HostBuilder()
                               .ConfigureAppConfiguration((context, config) =>
                               {
-                                  var userFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+                                  var userFolder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
                                   var settingsPath = $"{userFolder}/SecretSettings/resistance.Production.json";
                                   config.AddJsonFile(settingsPath);
                               })
