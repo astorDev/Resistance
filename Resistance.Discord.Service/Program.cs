@@ -34,7 +34,6 @@ namespace Resistance.Discord.Service
             {
                 Console.WriteLine(ex);
             }
-
         }
     }
 }

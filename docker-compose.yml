@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  discord_service:
+    image: resistance/discord/service
+    restart: always
+    environment:
+      - NETCORE_ENVIRONMENT=Production
+    build:
+      context: .
+      dockerfile: Resistance.Discord.Service/Dockerfile
+    volumes:
+      - /Users/astor:/root
